@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p id="notice"><%= notice %></p>
+
+  <h3 class>Easy Bot</h3>
+
+ <%# 投稿フォーム %>
+  <%= form_with(url: chats_path, method: :post, id: "new_chat", format: :json) do |form| %>
+    <div class="field">
+      <%= form.text_area :keyword, id: :chat_body, placeholder: "type a messags here", class:"textbox" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit '送信'%>
+    </div>
+  <% end %>
+
+<%# index画面内表示 %>
+  <div class="body">
+    <p><% @chats.each do |chat| %></p>
+      You : <%= chat.keyword %>
+    <% end %>
+  </div>
