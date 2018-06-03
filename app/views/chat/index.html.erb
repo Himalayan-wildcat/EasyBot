@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+  <h3 class>Easy Bot</h3>
+
+  <%# post form %>
+  <%= form_with(url: chat_index_path, method: :post, id: "new_chat", format: :json) do |form| %>
+    <div class="field">
+      <%= form.text_area :keyword, id: :chat_body, placeholder: "type a messags here", class:"textbox" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit '送信'%>
+    </div>
+  <% end %>
+
+<%# index view %>
+  <div class="body">
+      <p><% @chats.each do |chat| %></p>
+        <% if chat.identifier == 0 %>
+          <%= chat.created_at.to_s(:time) %> : You : <%= chat.keyword %>
+        <% else %>
+          <%= chat.created_at.to_s(:time) %> : Bot : <%= chat.keyword %>
+        <% end %>
+      <% end %>
+  </div>
