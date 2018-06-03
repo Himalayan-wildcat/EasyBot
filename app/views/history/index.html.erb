@@ -1,1 +1,8 @@
-<p>Hello</p>
+<p><% @chats.each do |chat| %></p>
+  <%=
+     "user_input": chat.keyword, // ユーザーが入力した文字列
+     "bot_response": "こんにちは。", // Botが応答した文字列
+     "response_timestamp": chat.created_at // リクエストを返した時刻(日本標準時)
+  %>
+<% end %>
+2018-04-10T03:50:40

@@ -17,9 +17,9 @@
   <div class="body">
       <p><% @chats.each do |chat| %></p>
         <% if chat.identifier == 0 %>
-          <%= chat.created_at.to_s(:time) %> : You : <%= chat.keyword %>
+          <%= chat.created_at.to_s(:time) %> :  You > <%= chat.keyword %>
         <% else %>
-          <%= chat.created_at.to_s(:time) %> : Bot : <%= chat.keyword %>
+          <%= chat.created_at.to_s(:time) %> :  Bot > <%= chat.keyword %>
         <% end %>
       <% end %>
   </div>

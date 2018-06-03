@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root 'chats#index'
-  resources :chats, only: [:index, :create]
+  root 'chat#index'
+  get  '/history/list', to: 'history#index'
+  resources :chat, only: [:index, :create]
 end
