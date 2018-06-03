@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.1.1'
+gem 'dotenv-rails'
 
 
 # gem 'redis', '~> 4.0'
@@ -29,7 +30,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'dotenv-rails', groups: [:development, :test]
 end
 
 group :development do
