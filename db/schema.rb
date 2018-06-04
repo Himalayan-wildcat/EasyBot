@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20180602232642) do
 
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "keyword"
+    t.text "user_input"
+    t.text "bot_response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "response"
     t.integer "identifier"
   end
 
