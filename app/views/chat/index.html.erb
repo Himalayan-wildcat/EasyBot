@@ -5,7 +5,7 @@
   <%# post form %>
   <%= form_with(url: chat_index_path, method: :post, id: "new_chat", format: :json) do |form| %>
     <div class="field">
-      <%= form.text_area :keyword, id: :chat_body, placeholder: "type a messags here", class:"textbox" %>
+      <%= form.text_area :user_input, id: :chat_user_request, placeholder: "type a message here", class:"textbox" %>
     </div>
 
     <div class="actions">
@@ -15,11 +15,8 @@
 
 <%# index view %>
   <div class="body">
-      <p><% @chats.each do |chat| %></p>
-        <% if chat.identifier == 0 %>
-          <%= chat.created_at.to_s(:time) %> :  You > <%= chat.keyword %>
-        <% else %>
-          <%= chat.created_at.to_s(:time) %> :  Bot > <%= chat.keyword %>
-        <% end %>
-      <% end %>
+    <% @chats.each do |chat| %></p>
+      <p><%= chat.created_at.to_s(:time) %> :  You > <%= chat.user_input %></p>
+      <p><%= chat.created_at.to_s(:time) %> :  Bot > <%= chat.bot_response %></p>
+    <% end %>
   </div>

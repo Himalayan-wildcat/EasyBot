@@ -2,7 +2,7 @@ class ChatController < ApplicationController
 
   def index
     @chats = Chat.all
-    
+
     respond_to do |format|
       format.html
       format.json { render json: @chats }
@@ -15,15 +15,15 @@ class ChatController < ApplicationController
     respond_to do |format|
       if @chat.save
 
-        case @user_input = Chat.order("created_at").last[:keyword]
+        case Chat.last[:user_input]
         when "こんにちは","こんにちは。"
-          @bot_response = Chat.create(keyword: "こんにちは。", identifier: 1)
+          @chat.update(bot_response: "こんにちは。", identifier: 1)
         when "今何時ですか？"
-          @bot_response =  Chat.create(keyword: Time.now.to_s(:jp_time)+ "です。", identifier: 1)
+          @chat.update(bot_response: Time.now.to_s(:jp_time)+ "です。", identifier: 1)
         when "今日の東京の天気は？"
-          @bot_response = Chat.create(keyword: Chat.get_weather + "です。", identifier: 1)
+          @chat.update(bot_response: Chat.get_weather + "です。", identifier: 1)
         else
-          @bot_response = Chat.create(keyword: "認識出来ませんでした。もう一度お願いします。", identifier: 1)
+          @chat.update(bot_response: "認識できませんでした。もう一度お願いします。", identifier:0)
         end
 
         format.html { redirect_to root_path }
@@ -35,7 +35,7 @@ class ChatController < ApplicationController
   private
 
     def chat_params
-      #merge identifier param of 0 for user input
-      params.permit(:keyword).merge(identifier:0)
+      params.permit(:user_input).merge(bot_response: "", identifier:0)
     end
+
 end
