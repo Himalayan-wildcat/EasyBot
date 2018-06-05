@@ -20,7 +20,7 @@ class ChatController < ApplicationController
           @chat.update(bot_response: "こんにちは。", identifier: 1)
         when "今何時ですか？","今何時","何時？"
           @chat.update(bot_response: Time.now.to_s(:jp_time)+ "です。", identifier: 1)
-        when "今日の東京の天気は？","今日の天気は？"
+        when "今日の東京の天気は？","今日の天気は？","天気は？"
           @chat.update(bot_response: Chat.get_weather + "です。", identifier: 1)
         else
           @chat.update(bot_response: "認識できませんでした。もう一度お願いします。", identifier:0)
