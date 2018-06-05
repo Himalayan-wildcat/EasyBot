@@ -16,6 +16,7 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: EasyBot_production
   username: EasyBot
   password: <%= ENV.fetch("EASYBOT_DATABASE_PASSWORD") %>
