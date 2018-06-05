@@ -5,13 +5,16 @@
   <%# post form %>
   <%= form_with(url: chat_index_path, method: :post, id: "new_chat", format: :json) do |form| %>
     <div class="field">
-      <%= form.text_area :user_input, id: :chat_user_request, placeholder: "type a message here", class:"textbox" %>
+      <%= form.text_area :user_input, id: :chat_user_input, placeholder: "type a message here", class:"form-control" %>
     </div>
 
     <div class="actions">
-      <%= form.submit '送信'%>
+      <%= form.submit  class:"btn btn-default" %>
     </div>
   <% end %>
+
+  <%= link_to '会話履歴参照', history_list_path %>
+  <br/>
 
 <%# index view %>
   <div class="body">
