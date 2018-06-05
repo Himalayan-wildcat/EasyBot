@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
   <h4>Easy Bot</h4>
   <%# post form %>
-  <%= form_with(url: chat_index_path, method: :post, id: "new_chat", format: :json) do |form| %>
+  <%= form_with(url: chat_index_path, method: :post, id: "new_chat", format: :json, remote: true) do |form| %>
     <div class="field">
       <%= form.text_area :user_input, id: :chat_user_input, placeholder: "Type Your Message Here", class:"form-control" %>
       <%= form.submit '送信', class:"btn btn-secondary" %>
@@ -9,11 +9,12 @@
   <% end %>
 
   <p><%= link_to '▶︎ 会話履歴参照ページへ', history_list_path, class:"button_to_json" %></p>
+  <br/>
 
   <%# index view %>
   <div class="body">
     <% @chats.each do |chat| %></p>
-      <p><%= Time.now.to_s(:time) %> :  You > <%= chat.user_input %></p>
-      <p><%= (Time.now + rand(5)).to_s(:time) %> :  Bot > <%= chat.bot_response %></p>
+      <p><%= chat.created_at.strftime('%H:%M:%S')     %> :  You > <%= chat.user_input %></p>
+      <p><%= (chat.created_at+3).strftime('%H:%M:%S') %> :  Bot > <%= chat.bot_response %></p>
     <% end %>
   </div>
